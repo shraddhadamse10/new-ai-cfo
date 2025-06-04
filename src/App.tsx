@@ -2,6 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+// Auth
+import AuthProvider from './components/auth/AuthProvider';
+import Login from './pages/auth/Login';
+import SignUp from './pages/auth/SignUp';
+
 // Layouts
 import MainLayout from './layouts/MainLayout';
 
@@ -15,13 +20,13 @@ import Insights from './pages/Insights';
 function App() {
   return (
     <Router>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="min-h-screen bg-neutral-50"
-      >
-        <Routes>
+      <Routes>
+        {/* Auth routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        
+        {/* Protected routes */}
+        <Route element={<AuthProvider />}>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="transactions" element={<Transactions />} />
@@ -29,8 +34,8 @@ function App() {
             <Route path="goals" element={<Goals />} />
             <Route path="insights" element={<Insights />} />
           </Route>
-        </Routes>
-      </motion.div>
+        </Route>
+      </Routes>
     </Router>
   );
 }
