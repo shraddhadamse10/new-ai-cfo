@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { supabase } from '../../lib/supabase';
-import { useAuthStore } from '../../store/authStore';
+import { supabase } from 'new-ai-cfo/src/lib/supabase';
+import { useAuthStore } from 'new-ai-cfo/src/store/authStore';
 
 interface AuthProviderProps {
   children: React.ReactNode;
