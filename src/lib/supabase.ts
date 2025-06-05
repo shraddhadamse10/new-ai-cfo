@@ -8,4 +8,4 @@ if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase environment variables');
 }
 
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient<Database>(https://ecdylxpeciuqabuayfcv.supabase.co,eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVjZHlseHBlY2l1cWFidWF5ZmN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkwMjY2MDYsImV4cCI6MjA2NDYwMjYwNn0.1Zt9PmAPVfNo6_SEuOntBUo5VzavqNUM0cy6vXDiItg);
