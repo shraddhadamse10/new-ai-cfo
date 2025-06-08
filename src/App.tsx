@@ -17,26 +17,31 @@ import Budgets from './pages/Budgets';
 import Goals from './pages/Goals';
 import Insights from './pages/Insights';
 
+// Opera CSP Provider
+import { OperaCSPProvider } from './components/OperaCSPProvider';
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Auth routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        
-        {/* Protected routes */}
-        <Route element={<AuthProvider />}>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="transactions" element={<Transactions />} />
-            <Route path="budgets" element={<Budgets />} />
-            <Route path="goals" element={<Goals />} />
-            <Route path="insights" element={<Insights />} />
+    <OperaCSPProvider>
+      <Router>
+        <Routes>
+          {/* Auth routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          
+          {/* Protected routes */}
+          <Route element={<AuthProvider />}>
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="transactions" element={<Transactions />} />
+              <Route path="budgets" element={<Budgets />} />
+              <Route path="goals" element={<Goals />} />
+              <Route path="insights" element={<Insights />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </OperaCSPProvider>
   );
 }
 

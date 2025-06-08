@@ -4,12 +4,20 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.pexels.com;">
+    <!-- Opera-optimized CSP with nonce-based security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-opera-secure-2024' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.pexels.com; object-src 'none'; base-uri 'self';">
     <title>FinanceAI - Your Personal AI CFO</title>
     <meta name="description" content="AI-powered financial management and insights to optimize your finances" />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" nonce="opera-secure-2024"></script>
+    <!-- Opera compatibility detection -->
+    <script nonce="opera-secure-2024">
+      window.isOpera = navigator.userAgent.includes('OPR/') || navigator.userAgent.includes('Opera/');
+      if (window.isOpera) {
+        console.log('Opera browser detected - CSP compatibility layer active');
+      }
+    </script>
   </body>
 </html>
