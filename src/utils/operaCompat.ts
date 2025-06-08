@@ -15,7 +15,19 @@ export class OperaCSPCompat {
         return JSON.parse(expression);
       }
 
-      // For simple expressions, use Function constructor
+      // For simple mathematical expressions
+      if (/^[\d\s+\-*/().]+$/.test(expression)) {
+        // Use Function constructor instead of eval for mathematical expressions
+        const func = new Function('return (' + expression + ')');
+        return func();
+      }
+
+      // For simple property access
+      if (/^[\w.]+$/.test(expression)) {
+        return this.getNestedProperty(context, expression);
+      }
+
+      // For simple expressions with context, use Function constructor
       const contextKeys = Object.keys(context);
       const contextValues = Object.values(context);
       const func = new Function(...contextKeys, `"use strict"; return (${expression})`);
